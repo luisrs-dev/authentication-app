@@ -50,7 +50,6 @@ const loginUser = async ({ rut, password }: Auth, res: Response) => {
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
     secure: false,
-      sameSite: 'none',
     expires: new Date( Date.now() + expiresIn * 1000 )
   });  
 
