@@ -12,12 +12,13 @@ const generateToken = (id: string) => {
     return jwt;
 } 
 
-const generateRefreshToken = (uid: string ) => {
+const generateRefreshToken = (uid: string, email: string ) => {
     const expiresIn = 60* 60 * 24 * 30;
     try {
-        const refreshToken = sign( {uid}, JWT_REFRESH, {expiresIn} );
+        const refreshToken = sign( {uid, email}, JWT_REFRESH, {expiresIn} );
         return refreshToken;
     } catch (error) {
+        console.log(error);
         
     }
 }

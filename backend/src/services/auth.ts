@@ -44,20 +44,12 @@ const loginUser = async ({ rut, password }: Auth, res: Response) => {
     return "PASSWORD_INCORRECT";
   }
 
-  const refreshToken = generateRefreshToken(checkIs._id);
-  
-  const expiresIn: number = 60*60*24*30;
-  res.cookie("refreshToken", refreshToken, {
-    httpOnly: true,
-    secure: false,
-    expires: new Date( Date.now() + expiresIn * 1000 )
-  });  
+ 
 
   const token = generateToken(checkIs.email);
   const data = {
     token,
-    user: checkIs,
-    refreshToken,
+    user: checkIs
   };
   await registerDataLogin({ type: "Inicio de sesión", rut, password });
   return data;

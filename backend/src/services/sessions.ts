@@ -1,4 +1,3 @@
-import { Car } from '../interfaces/car.interface';
 import SessionModel from '../models/session'
 
 const getSessions = async () => {

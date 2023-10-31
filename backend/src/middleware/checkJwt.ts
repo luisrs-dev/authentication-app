@@ -8,27 +8,16 @@ interface RequestExt extends Request {
 
 const checkJwt = (req: RequestExt, res: Response, next: NextFunction) => {
     try {
-        console.log({checkJwtRefreshToken: req.cookies.refreshToken});
-        
-        // const jwtByUser = req.headers.authorization  || null;
-        // console.log({jwtByUser});
-        
-        // const jwt = jwtByUser?.split(' ').pop();
-        // console.log({jwt});
-        const jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NTNhMDAzZmU5NWZjY2JkNmNhMmFmMDgiLCJpYXQiOjE2OTgzOTA2MzcsImV4cCI6MTcwMDk4MjYzN30.NYWmKySzESCdd9g-yFGNYLDHGBKLJz03CQxkL6GXEKU";
 
-        const isUser = verifyRefreshToken(jwt);
-        console.log({isUser});
-        
-        // const isUser = verifyToken(`${jwt}`);
-        
-        if(!isUser){
-            res.status(403)
-            res.send("INVALID_TOKEN")
-        }else{
-            req.user = isUser;
-            next();
+        const token = req.headers.authorization!.split(" ")[1];
+        const decodedToken = verifyToken(token);
+
+        if (typeof decodedToken === 'string') {
+            return decodedToken;
+        } else {
+            req.user = { email: decodedToken.email, userId: decodedToken.id };
         }
+        next();
     } catch (error) {
         console.log(error);
         res.status(400)

@@ -18,7 +18,6 @@ const loginCtrl = async (req: Request, res: Response) => {
     const responseUser = await loginUser({ rut, password }, res);
 
     const refreshTokenCookie = req.cookies.refreshToken;
-    console.log({'loginCtrl': refreshTokenCookie});
 
     if (responseUser === 'PASSWORD_INCORRECT') {
         res.status(403)
@@ -33,30 +32,21 @@ const sessionListCtrl = async (req: Request, res: Response) => {
     res.status(200).send(responseSessions)
 }
 
-const refreshTokenCtrl = ( req: Request, res: Response) => {
+const refreshTokenCtrl = (req: Request, res: Response) => {
 
     try {
-        const { refreshToken } = req.body;        
+        const { refreshToken } = req.body;
         if (refreshToken) {
             const expiresIn = 60 * 60 * 24 * 30;
 
-              const uid = verifyRefreshToken(refreshToken)
-              console.log({uid});
-              
-              const token = generateToken(uid);
-              console.log({token});
-              
-              res.cookie("token", token, {  
-                httpOnly : true,
-                // secure : !(process.env.MODO == "develop"),
-                expires : new Date(Date.now() + expiresIn * 1000),
-                // sameSite: "none",
-            })
+            const uid = verifyRefreshToken(refreshToken)
+            const token = generateToken(uid);
 
-              res.status(200)
-              res.send(token)
 
-          }
+            res.status(200)
+            res.send(token)
+
+        }
 
     } catch (error) {
         console.log(error);
