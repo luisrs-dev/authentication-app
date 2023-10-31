@@ -29,11 +29,14 @@ Este proyecto se enfoca en trabajar con la autenticación y la seguridad de los 
 
 - **Gestión de Sesiones con JWT:** Uso de JSON Web Tokens para la gestión de sesiones de usuario, lo que proporciona autenticación segura y accesible.
 
-- **Accesibilidad:** Consideraciones de accesibilidad para garantizar que la aplicación sea utilizada de manera efectiva por todas las personas, independientemente de sus capacidades.
+- **Registro de usuarios:** Uso de formularios para un registro de nuevos usuarios a la plataforma.
+
+- **Registro de sesiones:** Cada intento de inicio de sesión, ya sea exitoso o no se registra, manteniendo un historial de esta activdiad.
+
 
 ## Requisitos
 
-- Node.js y npm instalados en tu sistema.
+- Angular CLI, Node.js y npm instalados en tu sistema.
 - Una base de datos para almacenar información de usuarios (En este caso MongoDb).
 
 ## Instalación
@@ -50,23 +53,39 @@ Este proyecto se enfoca en trabajar con la autenticación y la seguridad de los 
    cd tu-proyecto
    ```
 
-3. Instala las dependencias:
+3. Instala las dependencias en el frontend:
 
    ```bash
    cd frontend 
    npm install
-
-cd backend
-npm install
-
    ```
 
-4. Configura la conexión a tu base de datos y otros parámetros en el archivo de configuración.
-
-5. Ejecuta la aplicación:
+4. Instala las dependencias en el backend:
 
    ```bash
+   cd frontend 
+   npm install
+   ```
+
+5. Crea un archivo con las variables de entorno del sistema:
+
+- PORT
+- DB_URI
+- JWT_SECRET
+
+6. Configura la conexión a tu base de datos y otros parámetros en el archivo de configuración.
+
+7. Ejecuta la aplicación frontend:
+
+   ```bash
+   cd frontend
    npm start
+   ```
+8. Ejecuta la aplicación backend:
+
+   ```bash
+   cd backend
+   npm run dev
    ```
 
 ## Uso
