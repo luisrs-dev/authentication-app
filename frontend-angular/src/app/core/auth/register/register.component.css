@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  div {
+    flex: 1 0 100%; /* Una sola columna en dispositivos móviles */
+  }
+}
+
+.container div {
+    width: 50%;
+    height: 100%;
+  }
+
+  mat-card{
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  mat-form-field{
+    width: 70%;
+  }
+
+  p{
+    margin-bottom: 1%;
+    margin-top: 1%;
+
+  }
+
+  .text-content{
+    padding-left: 15%;
+  }
+
+  button{
+    margin-right: 2%;
+  }

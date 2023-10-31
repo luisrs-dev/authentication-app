@@ -1,0 +1,79 @@
+<mat-toolbar color="primary">
+  <span>
+    <img src="./assets/images/logo-chek.png" width="100%" height="50"/>
+  </span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+<mat-toolbar>
+  <mat-toolbar-row style="background-color: black; color: white">
+    <span>
+      <img src="./assets/images/ripley.png" width="50" height="40"/>
+    </span>
+    <span class="example-spacer"></span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-card>
+  <mat-card-content>
+    <div class="container">
+      <div class="col">
+        <h2>Beneficios de tener una cuenta</h2>
+        <ul>
+          <li>Tener acceso exclusivo a <b>ofertas y promociones.</b></li>
+          <li><b>Comprar en un click.</b></li>
+          <li>Revisar tu <b>historial de compras.</b></li>
+          <li>Guardar y actualizar <b>tus datos o direcciones.</b></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3 color="primary">
+          <strong>Completa el siguiente formulario</strong>
+        </h3>
+
+        <form [formGroup]="form" (submit)="onRegister()">
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Ingresa tu nombre</mat-label>
+              <input
+                matInput
+                formControlName="name"
+                placeholder="Nombre completo"
+              />
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Ingresa tu RUT</mat-label>
+            <input matInput formControlName="rut" placeholder="RUT" formatRut/>
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Ingresa un email válido</mat-label>
+              <input matInput formControlName="email" placeholder="Email" />
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Crea tu contraseña</mat-label>
+              <input
+                type="password"
+                matInput
+                formControlName="password"
+                placeholder="Contraseña"
+              />
+            </mat-form-field>
+          </p>
+          <button mat-stroked-button routerLink="/login" color="primary">
+            Volver
+          </button>
+          <button mat-raised-button type="submit" color="primary">
+            Registrarme
+          </button>
+        </form>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

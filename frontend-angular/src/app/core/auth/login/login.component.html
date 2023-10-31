@@ -1,0 +1,56 @@
+<div class="body">
+  <mat-card>
+    <div class="login">
+      <form [formGroup]="form" (submit)="onLogin()">
+        <img src="./assets/images/logo-check.png" width="60%"  />
+        <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="rut"
+            formatRut
+            placeholder="Ingrese un RUT"
+          />
+          <mat-error *ngIf="form.get('rut')!.invalid"
+            >RUT inválido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Contraseña</mat-label>
+
+          <input
+            matInput
+            type="password"
+            formControlName="password"
+            placeholder="Contraseña"
+          />
+          <mat-error *ngIf="form.get('password')!.invalid"
+            >Please enter a valid password.</mat-error>
+        </mat-form-field>
+        <div>
+          <a routerLink="/login" style="color: #8547a2"
+            >Olvide mi contraseña</a
+          >
+        </div>
+        <br />
+
+        <button
+          mat-raised-button
+          style="color: white"
+          type="submit"
+          class="button width-custom"
+          color="primary"
+        >
+          Iniciar sesión
+        </button>
+        <button
+          mat-stroked-button
+          color="primary"
+          class="button width-custom"
+          routerLink="/register"
+          >Registrarme</button>
+      </form>
+    </div>
+  </mat-card>
+</div>
